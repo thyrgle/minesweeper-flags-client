@@ -26,6 +26,19 @@
 <script>
 import { mapState } from "vuex";
 
+console.log("loading flags")
+var flags = require("../kotlin/flags-js-simon");
+console.log("flags loaded")
+console.log(flags)
+if (typeof flags["flags-js"] !== "undefined") {
+  // This is needed when doing a production build, but is not used for `npm run serve` locally.
+  console.log("production build fix")
+  flags = flags["flags-js"];
+}
+
+let ur = new flags.default.net.zomis.games.ur.RoyalGameOfUr_init();
+console.log(ur);
+
 export default {
   name: "Home",
   props: ["logout"],

@@ -4,5 +4,11 @@ if (branch === "master") {
 }
 
 module.exports = {
+  chainWebpack: config => {
+    config.externals({
+      kotlin: "kotlin",
+      klogging: "klogging"
+    });
+  },
   publicPath: "/" + branch
 };
